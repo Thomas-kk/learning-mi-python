@@ -1,5 +1,6 @@
 import sys
 
+
 def oddOrEven():
     print("Please input a number")
     numStr = input()
@@ -15,5 +16,6 @@ def oddOrEven():
         print("Number {} is even".format(num))
     else:
         print("Number {} is odd".format(num))
+
 
 oddOrEven()
