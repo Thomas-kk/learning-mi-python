@@ -14,17 +14,23 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 
 # Load dataset
-url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
-names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+url = (
+    "https://archive.ics.uci.edu/ml/"
+    "machine-learning-databases/iris/iris.data")
+names = [
+    'sepal-length', 'sepal-width',
+    'petal-length', 'petal-width', 'class']
 dataset = pandas.read_csv(url, names=names)
 
 # Split-out validation dataset
 array = dataset.values
-X = array[:,0:4] #Split the array into on that has the values
-Y = array[:,4]  #and one that has the label
+X = array[:, 0:4]  # Split the array into on that has the values
+Y = array[:, 4]  # and one that has the label
 validation_size = 0.20
 seed = 7
-X_train, X_validation, Y_train, Y_validation = model_selection.train_test_split(X, Y, test_size=validation_size, random_state=seed)
+X_train, X_validation,
+Y_train, Y_validation = model_selection.train_test_split(
+    X, Y, test_size=validation_size, random_state=seed)
 
 # Test options and evaluation metric
 seed = 7
@@ -43,12 +49,13 @@ models.append(('SVM', SVC()))
 results = []
 names = []
 for name, model in models:
-	kfold = model_selection.KFold(n_splits=10, random_state=seed)
-	cv_results = model_selection.cross_val_score(model, X_train, Y_train, cv=kfold, scoring=scoring)
-	results.append(cv_results)
-	names.append(name)
-	msg = "%s: %f (%f)" % (name, cv_results.mean(), cv_results.std())
-	print(msg)
+    kfold = model_selection.KFold(n_splits=10, random_state=seed)
+    cv_results = model_selection.cross_val_score(
+        model, X_train, Y_train, cv=kfold, scoring=scoring)
+    results.append(cv_results)
+    names.append(name)
+    msg = "%s: %f (%f)" % (name, cv_results.mean(), cv_results.std())
+    print(msg)
 
 
 # Make predictions on validation dataset
