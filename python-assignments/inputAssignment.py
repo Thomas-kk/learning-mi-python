@@ -12,7 +12,7 @@ except ValueError:
     sys.exit(0)
 print('You will be 100 years old in {}'.format(
     datetime.datetime.now().year-age+100))
-print("Would you like to have the last massage printed again? (yes/no)")
+print("Would you like to have the last massage printed again? (yes/no/maybe)")
 con = input()
 if(con.upper() == "YES" or con.upper() == "Y"):
     print("How many times?")
