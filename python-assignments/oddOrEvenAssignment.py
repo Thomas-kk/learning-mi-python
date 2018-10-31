@@ -2,7 +2,7 @@ import sys
 
 
 def oddOrEven():
-    print("Please input a number")
+    print("Please input a number, I beg you! Need this so badly")
     numStr = input()
     try:
         num = int(numStr)
